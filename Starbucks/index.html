@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Starbucks Clone - Freshly brewed coffee and special drinks. Explore our menu and order online.">
+    <meta name="keywords" content="coffee, Starbucks, drinks, menu, order online">
+    <title>Strbucks</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top" role="navigation"
+        aria-label="Main navigation">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#home">
+                <img src="starbucks.png" alt="Starbucks Logo" width="40" height="40" class="me-2">
+                Starbucks
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="#home" aria-current="page">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#promotions">Promotions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showOrdersModal()" aria-label="View Orders">View
+                            Orders</a>
+                    </li>
+                    <li class="nav-item" id="auth-links">
+                        <a class="nav-link" href="#signup-modal" onclick="showSignupModal()"
+                            aria-label="singup">Login</a>
+                    </li>
+                    <li class="nav-item" id="logout-link" style="display: none;">
+                        <a class="nav-link" href="#" onclick="logout()" aria-label="Logout">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="cart-icon" aria-label="Shopping cart" onclick="showOrdersModal()">
+                            <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                            <span id="cart-count" aria-live="polite">0</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Hero Carousel Section -->
+        <section id="home" class="hero-carousel">
+            <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="hero"
+                            style="background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1200');">
+                            <div class="container text-center text-white">
+                                <h1>Welcome to Starbucks</h1>
+                                <p class="lead">Freshly brewed coffee, just for you.</p>
+                                <a href="#menu" class="btn btn-success btn-lg">Explore Menu</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="hero"
+                            style="background-image: url('https://images.unsplash.com/photo-1559056199-641a0ac8b55e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1200');">
+                            <div class="container text-center text-white">
+                                <h1>Exclusive Promotions</h1>
+                                <p class="lead">Discover seasonal specials and loyalty rewards.</p>
+                                <a href="#promotions" class="btn btn-success btn-lg">View Promotions</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="hero" style="background-image: url('hotcoffe.jpg');">
+                            <div class="container text-center text-white">
+                                <h1>Exclusive Promotions</h1>
+                                <p class="lead">Discover seasonal specials and loyalty rewards.</p>
+                                <a href="#promotions" class="btn btn-success btn-lg">View Promotions</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="hero" style="background-image: url('scofee.jpg');">
+                            <div class="container text-center text-white">
+                                <h1>Exclusive Promotions</h1>
+                                <p class="lead">Discover seasonal specials and loyalty rewards.</p>
+                                <a href="#promotions" class="btn btn-success btn-lg">View Promotions</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+        <!-- Menu Section -->
+        <section id="menu" class="py-5" role="region" aria-labelledby="menu-heading">
+            <div class="container">
+                <h2 id="menu-heading" class="text-center mb-4">Our Special Drinks</h2>
+                <div class="menu-tabs" role="tablist">
+                    <button class="menu-tab active" onclick="filterMenu('all')" role="tab"
+                        aria-selected="true">All</button>
+                    <button class="menu-tab" onclick="filterMenu('hot')" role="tab">Hot Drinks</button>
+                    <button class="menu-tab" onclick="filterMenu('cold')" role="tab">Cold Drinks</button>
+                </div>
+                <div class="row g-4" id="menu-items" role="tabpanel">
+                    <div class="col-md-4 menu-item hot">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218fHx8fHx8fHwxNjA3OTQ5MTc5&ixlib=rb-4.0.3&q=80&w=400"
+                                class="card-img-top" alt="Cappuccino drink" loading="lazy">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Cappuccino</h5>
+                                <p class="card-text">₹215</p>
+                                <button class="btn btn-success" onclick="addToCart('Cappuccino', 215)">Order
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 menu-item hot">
+                        <div class="card h-100 shadow-sm">
+                            <img src="latte.jpg" class="card-img-top" alt="Latte drink" loading="lazy">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Latte</h5>
+                                <p class="card-text">₹299</p>
+                                <button class="btn btn-success" onclick="addToCart('Latte', 299)">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 menu-item cold">
+                        <div class="card h-100 shadow-sm">
+                            <img src="Frappuccino.jpg" class="card-img-top" alt="Frappuccino drink" loading="lazy">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Frappuccino</h5>
+                                <p class="card-text">₹270</p>
+                                <button class="btn btn-success" onclick="addToCart('Frappuccino', 270)">Order
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 menu-item hot">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400"
+                                class="card-img-top" alt="Americano drink" loading="lazy">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Americano</h5>
+                                <p class="card-text">₹300</p>
+                                <button class="btn btn-success" onclick="addToCart('Americano', 300)">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 menu-item cold">
+                        <div class="card h-100 shadow-sm">
+                            <img src="cold.jpg" class="card-img-top" alt="Iced Coffee drink" loading="lazy">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Iced Coffee</h5>
+                                <p class="card-text">₹260</p>
+                                <button class="btn btn-success" onclick="addToCart('Iced Coffee', 260)">Order
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 menu-item cold">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400"
+                                class="card-img-top" alt="Cold Brew drink" loading="lazy">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Cold Brew</h5>
+                                <p class="card-text">₹236</p>
+                                <button class="btn btn-success" onclick="addToCart('Cold Brew', 236)">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-5 bg-light" role="region" aria-labelledby="about-heading">
+            <div class="container">
+                <h2 id="about-heading" class="text-center mb-4">About Starbucks</h2>
+                <p class="text-center">Starbucks is a global coffeehouse chain serving the finest handcrafted beverages
+                    and coffee products to coffee lovers worldwide. We pride ourselves on quality, sustainability, and
+                    the perfect coffee experience.</p>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-5 testimonials" role="region" aria-labelledby="testimonials-heading">
+            <div class="container">
+                <h2 id="testimonials-heading" class="text-center mb-4">What Our Customers Say</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body text-center">
+                                <p class="card-text">"The best coffee experience I've ever had. The latte was perfect!"
+                                </p>
+                                <h6 class="card-title">- Sarah Johnson</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body text-center">
+                                <p class="card-text">"Love the variety of drinks. The Frappuccino is my favorite!"</p>
+                                <h6 class="card-title">- Mike Chen</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body text-center">
+                                <p class="card-text">"Great atmosphere and excellent service. Highly recommend!"</p>
+                                <h6 class="card-title">- Emily Davis</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Promotions Section (Brand Advertisements) -->
+        <section id="promotions" class="py-5 bg-light" role="region" aria-labelledby="promotions-heading">
+            <div class="container">
+                <h2 id="promotions-heading" class="text-center mb-4">Exclusive Promotions</h2>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="promo-card shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600"
+                                alt="Seasonal Latte Promotion" class="promo-img" loading="lazy">
+                            <div class="promo-content">
+                                <h5>Seasonal Pumpkin Latte</h5>
+                                <p>Indulge in our limited-time Pumpkin Spice Latte. Get 20% off your first order!</p>
+                                <a href="#menu" class="btn btn-success">Order Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="promo-card shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600"
+                                alt="Loyalty Program Advertisement" class="promo-img" loading="lazy">
+                            <div class="promo-content">
+                                <h5>Join Our Loyalty Program</h5>
+                                <p>Earn stars on every purchase and redeem for free drinks. Sign up today!</p>
+                                <a href="#contact" class="btn btn-success">Sign Up</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-5" role="region" aria-labelledby="contact-heading">
+            <div class="container">
+                <h2 id="contact-heading" class="text-center mb-4">Contact Us</h2>
+                <form id="contact-form" class="mx-auto">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4" role="contentinfo">
+        <div class="container text-center">
+            <p>&copy; 2023 Coffebucks. All rights reserved.</p>
+            <div>
+                <a href="https://www.facebook.com/starbucksindia/" class="text-white me-3" aria-label="Facebook">Facebook</a>
+                <a href="https://www.instagram.com/starbucksindia/?hl=en" class="text-white me-3" aria-label="Instagram">Instagram</a>
+                <a href="https://x.com/StarbucksIndia" class="text-white" aria-label="Twitter">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Order Modal -->
+    <div id="order-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()" aria-label="Close modal">&times;</span>
+            <h3 id="modal-title">Order <span id="order-item"></span></h3>
+            <p>Price: ₹<span id="order-price"></span></p>
+            <div class="mb-3">
+                <label for="size" class="form-label">Size</label>
+                <select class="form-control" id="size">
+                    <option value="Small">Small</option>
+                    <option value="Medium" selected>Medium</option>
+                    <option value="Large">Large</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="quantity" class="form-label">Quantity</label>
+                <input type="number" class="form-control" id="quantity" value="1" min="1">
+            </div>
+            <button class="btn btn-success" onclick="submitOrder()">Place Order</button>
+        </div>
+    </div>
+
+    <!-- View Orders Modal -->
+    <div id="orders-modal" class="modal" role="dialog" aria-labelledby="orders-title" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close" onclick="closeOrdersModal()" aria-label="Close modal">&times;</span>
+            <h3 id="orders-title">Your Orders</h3>
+            <div id="orders-list"></div>
+            <p id="orders-total" class="mt-3"></p>
+            <button class="btn btn-danger me-2" onclick="clearCart()">Clear Cart</button>
+            <button class="btn btn-success" onclick="checkout()">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal" role="dialog" aria-labelledby="login-title" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()" aria-label="Close modal">&times;</span>
+            <h3 id="login-title">Login</h3>
+            <form id="login-form">
+                <div class="mb-3">
+                    <label for="login-email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="login-email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="login-password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="login-password" required>
+                </div>
+                <button type="submit" class="btn btn-success">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signup-modal" class="modal" role="dialog" aria-labelledby="signup-title" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close" onclick="closeSignupModal()" aria-label="Close modal">&times;</span>
+            <h3 id="signup-title">Signup</h3>
+            <form id="signup-form">
+                <div class="mb-3">
+                    <label for="signup-name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="signup-name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="signup-email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="signup-email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="signup-password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="signup-password" required>
+                </div>
+                <button type="submit" class="btn btn-success"><a onclick="closeLoginModal">Signup</a></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <!-- Custom JS -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Menu filtering
+        function filterMenu(category) {
+            const items = document.querySelectorAll('.menu-item');
+            const tabs = document.querySelectorAll('.menu-tab');
+
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                tab.setAttribute('aria-selected', 'false');
+            });
+            event.target.classList.add('active');
+            event.target.setAttribute('aria-selected', 'true');
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        updateCartCount();
+
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            showOrderModal(name, price);
+        }
+
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cart-count').textContent = count;
+        }
+
+        // Order modal
+        function showOrderModal(name, price) {
+            const modal = document.getElementById('order-modal');
+            document.getElementById('order-item').textContent = name;
+            document.getElementById('order-price').textContent = price;
+            modal.style.display = 'block';
+            modal.setAttribute('aria-hidden', 'false');
+            document.getElementById('size').focus(); // Focus for accessibility
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('order-modal');
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+        }
+
+        function submitOrder() {
+            const size = document.getElementById('size').value;
+            const quantity = document.getElementById('quantity').value;
+            alert(`Order placed: ${quantity} ${size} ${document.getElementById('order-item').textContent}(s)`);
+            closeModal();
+        }
+
+        // View Orders modal
+        function showOrdersModal() {
+            const modal = document.getElementById('orders-modal');
+            const ordersList = document.getElementById('orders-list');
+            const ordersTotal = document.getElementById('orders-total');
+            ordersList.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                ordersList.innerHTML += `<p>${item.name} - Quantity: ${item.quantity} - ₹${itemTotal}</p>`;
+            });
+            ordersTotal.textContent = `Total: ₹${total}`;
+            modal.style.display = 'block';
+            modal.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeOrdersModal() {
+            const modal = document.getElementById('orders-modal');
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+        }
+
+        function clearCart() {
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            closeOrdersModal();
+            alert('Cart cleared!');
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            alert('Checkout successful! Thank you for your order.');
+            clearCart();
+            closeOrdersModal();
+        }
+
+        // Login modal
+        function showLoginModal() {
+            const modal = document.getElementById('login-modal');
+            modal.style.display = 'block';
+            modal.setAttribute('aria-hidden', 'false');
+            document.getElementById('login-email').focus(); // Focus for accessibility
+        }
+
+        function closeLoginModal() {
+            const modal = document.getElementById('login-modal');
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+        }
+
+        // Login form
+        document.getElementById('login-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (user && user.email === email && user.password === password) {
+                alert('Login successful!');
+                closeLoginModal();
+                // Update navbar to show logout
+                document.getElementById('auth-links').style.display = 'none';
+                document.getElementById('logout-link').style.display = 'block';
+            } else {
+                alert('Invalid email or password.');
+            }
+        });
+
+        // Signup modal
+        function showSignupModal() {
+            const modal = document.getElementById('signup-modal');
+            modal.style.display = 'block';
+            modal.setAttribute('aria-hidden', 'false');
+            document.getElementById('signup-name').focus(); // Focus for accessibility
+        }
+
+        function closeSignupModal() {
+            const modal = document.getElementById('signup-modal');
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+        }
+
+        // Signup form
+        document.getElementById('signup-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            // Simulate signup (store in localStorage for demo purposes)
+            localStorage.setItem('user', JSON.stringify({ name, email, password }));
+            alert('Signup successful! You can now login.');
+            closeSignupModal();
+            // Update navbar to show logout
+            document.getElementById('auth-links').style.display = 'none';
+            document.getElementById('logout-link').style.display = 'block';
+        });
+
+        // Logout
+        function logout() {
+            localStorage.removeItem('user');
+            document.getElementById('auth-links').style.display = 'block';
+            document.getElementById('logout-link').style.display = 'none';
+            alert('Logged out successfully!');
+        }
+
+        // Contact form
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Close modal when clicking outside or pressing Escape
+        window.onclick = function (event) {
+            const modals = ['order-modal', 'orders-modal', 'login-modal', 'signup-modal'];
+            modals.forEach(id => {
+                const modal = document.getElementById(id);
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                    modal.setAttribute('aria-hidden', 'true');
+                }
+            });
+        };
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                const modals = ['order-modal', 'orders-modal', 'login-modal', 'signup-modal'];
+                modals.forEach(id => {
+                    const modal = document.getElementById(id);
+                    if (modal.style.display === 'block') {
+                        modal.style.display = 'none';
+                        modal.setAttribute('aria-hidden', 'true');
+                    }
+                });
+            }
+        });
+
+        // Check if user is logged in on page load
+        window.onload = function () {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (user) {
+                document.getElementById('auth-links').style.display = 'none';
+                document.getElementById('logout-link').style.display = 'block';
+            }
+        };
+    </script>
+</body>
+
+</html>
